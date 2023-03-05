@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Button,
   Paper,
   Table,
   TableBody,
@@ -40,26 +39,26 @@ const StyledDiv = styled("div")({
   marginTop:"20rem"
 });
 
-const QuestionTable = ({data,page,setId,questions,setPage}:{data:any[],page:number,setId:any,questions:any[],setPage:any}) => {
+const QuestionsTable = ({data,page,setId,questions,setPage,questionKey}:{data:any[],page:number,setId:any,questions:any[],setPage:any,questionKey:number}) => {
   return (
     <StyledDiv>
       <TableContainer component={Paper} sx={{ minWidth: 200, width: "70%" }}>
         <Table sx={{ minWidth: 200 }} aria-label="customized table">
           <TableHead>
-            <TableRow>
-              <StyledTableCell>Question</StyledTableCell>
+            <TableRow >
+              <StyledTableCell >Question</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data &&
               data?.map((question) => (
                 <StyledTableRow key={question.name}>
-                  <StyledTableCell component="th" scope="row" key={question.id}>
-                    <MathJaxContext>
-                       <MathJax inline dynamic>
-                      {question.Question}
+                  <StyledTableCell component="th" scope="row" key={questionKey}>
+                    <MathJaxContext key={questionKey}>
+                      <MathJax inline dynamic key={questionKey}>
+                        {question.Question}
                       </MathJax>
-                      </MathJaxContext>
+                    </MathJaxContext>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
@@ -85,4 +84,4 @@ const QuestionTable = ({data,page,setId,questions,setPage}:{data:any[],page:numb
   );
 }
 
-export default QuestionTable
+export default QuestionsTable

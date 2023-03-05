@@ -11,13 +11,6 @@ const questions: { key: number; id: string }[] = [
   { key: 3, id: "DifferentialCalculus2_901" },
 ];
 
-
-
-
-
-
-
-
 const Questions = () => {
 
     const [id, setId] = useState<any>({ key: 1, id: "AreaUnderTheCurve_901" });
@@ -26,13 +19,14 @@ const Questions = () => {
 
   return (
     <>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       <QuestionTable
         data={data}
         page={page}
         setId={setId}
         setPage={setPage}
         questions={questions}
+        questionKey={id.id}
       />
     </>
   );
